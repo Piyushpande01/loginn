@@ -1,0 +1,497 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background:
+    radial-gradient(circle, rgb(0, 0, 0) 2px, transparent 2px),
+    radial-gradient(circle, rgb(2, 55, 228) 2px, transparent 2px);
+  background-size: 50px 50px;
+  background-position: 0 0, 80px 80px;
+  background-repeat: repeat;
+}
+
+.header {
+  height: 60px;
+  width: 100%;
+  background-color: white;
+  box-shadow: 1px 1px 10px gray;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.headerh {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerh h1 {
+  color: blue;
+  font-size: 20px;
+}
+
+.side {
+  height: 100vh;
+  width: 225px;
+  background-color: white;
+  box-shadow: 1px 1px 10px gray;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.side a {
+  font-size: 18px;
+  margin: 10px 0;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.side a:hover {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.main {
+  margin-left: 225px;
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.cardp {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card, .card1, .card2 {
+  background-color: white;
+  width: 300px;
+  height: 100px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover, .card1:hover, .card2:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  color: blue;
+}
+
+.DASH {
+  font-size: 18px;
+  color: blue;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cut, .three {
+  width: 50px;
+  border-radius: 50px;
+}
+
+.cut:hover, .three:hover {
+  background-color: #007bff;
+}
+
+.sec {
+  width: 90px;
+  height: 40px;
+  position: relative;
+  right: 20%;
+  top: 25px;
+  background-color: #007bff;
+}
+
+.three {
+  position: relative;
+  right: 22%;
+}
+
+.datacard, .datacardteacher {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 20px;
+  width: 90%;
+}
+
+.datacardteacher {
+  width: 95%;
+  position: relative;
+  left: 0%;
+}
+
+.list, .addstudent, .listteacher, .addteacher, .meeting {
+  background-color: white;
+  width: 250px;
+  height: 70px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+  margin: 10px auto;
+}
+
+.listteacher, .meeting {
+  position: relative;
+  left: 20px;
+}
+
+.list:hover, .addstudent:hover {
+  cursor: pointer;
+  background-color: #007bff;
+}
+
+.form, .form-meeting {
+  width: 95%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  transition: 0.5s ease-in-out;
+  display: none;
+}
+
+.form1, .form-meeting1 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 16px;
+  justify-content: space-between;
+  transition: 0.6s ease-in-out;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+  margin-bottom: 15px;
+}
+
+.form1 label, .form-meeting1 label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form1 input[type="text"],
+.form1 input[type="date"],
+.form1 select,
+.form-meeting1 input[type="text"],
+.form-meeting1 input[type="date"],
+.form-meeting1 select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.form1 input[type="submit"],
+.form-meeting1 input[type="submit"] {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.form1 input[type="submit"]:hover,
+.form-meeting1 input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.table, .table-meeting, .teacherlist {
+  width: 95%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  border-collapse: collapse;
+  display: none;
+  transition: 0.9s ease-in-out;
+}
+
+.table th, .table td, .table-meeting th, .table-meeting td, .teacherlist th, .teacherlist td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+}
+
+.teacherlist th {
+  background-color: #007bff;
+  color: white;
+}
+
+.transition-box {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  transform: scaleY(0.95);
+}
+
+.transition-box.show {
+  opacity: 1;
+  max-height: 1000px;
+  transform: scaleY(1);
+}
+
+.time {
+  justify-content: center;
+  position: absolute;
+  right: 47%;
+  top: 12px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 25px;
+}
+
+.form-container, .table-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.meetinglist th, .meetinglist td {
+  width: 150vh;
+  padding: 10px;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .side {
+    transform: translateX(-100%);
+    top: 60px;
+    left: 0;
+    height: calc(100vh - 60px);
+    width: 200px;
+    flex-direction: column;
+    background-color: white;
+    z-index: 1001;
+  }
+
+  .side.show {
+    transform: translateX(0);
+  }
+
+  .three {
+    display: block !important;
+    position: fixed;
+    top: 70px;
+    left: 10px;
+    z-index: 1100;
+    background: white;
+    padding: 10px;
+  }
+
+  .main {
+    margin-left: 0;
+    margin-top: 120px;
+    padding: 10px;
+  }
+
+  .cardp {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  .card, .card1, .card2 {
+    width: 90%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+}
+.dashb{
+    background-color: transparent;
+    height: 75vh;
+}
+.studentchart{
+    height: 300px;
+}
+.chartt{
+    background-color: white;
+}
+/* Sidebar default - visible on desktop */
+.side {
+  width: 250px;
+  background-color: #333;
+  color: white;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Sidebar links styling */
+.side a {
+  display: block;
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.side a:hover {
+  background-color: #575757;
+}
+
+/* Hide sidebar by moving it left on small screens */
+@media (max-width: 768px) {
+  .side {
+    transform: translateX(-100%);
+    position: fixed;
+    z-index: 1000;
+  }
+  .side.active {
+    transform: translateX(0);
+  }
+
+  /* Show hamburger */
+  #three {
+    display: block;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+    color: #333;
+  }
+
+  /* Hide close icon initially */
+  #cut {
+    display: none;
+  }
+   .three{
+    margin-top: 10%;
+}
+}
+
+/* Show close icon when sidebar is active */
+.side.active #cut {
+  display: block;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: white;
+}
+
+/* Hide hamburger when sidebar is active */
+.side.active ~ #three {
+  display: none;
+}
+
+/* Adjust main content margin when sidebar is visible on desktop */
+@media (min-width: 769px) {
+  .main {
+    margin-left: 250px;
+  }
+ 
+}
+.side{
+    margin-top: 4%;
+}
+.cut{
+    margin-right: 1%;
+}

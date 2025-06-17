@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Container to allow horizontal scroll on small devices */
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* Make table take full width and fixed layout */
+#table1 {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* ensures columns shrink properly */
+}
+
+/* Smaller padding and font size on mobile */
+#table1 th, #table1 td {
+  padding: 8px 6px;
+  font-size: 14px;
+  word-wrap: break-word; /* break long words */
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+/* Responsive canvas */
+#studentChart {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+/* Optional: smaller font for very small devices */
+@media (max-width: 400px) {
+  #table1 th, #table1 td {
+    font-size: 12px;
+    padding: 6px 4px;
+  }
+}
+#studentChart {
+  height: 300px; /* fixed height or adapt as you want */
+  max-width: 100%;
+}
+
+
+    </style>
+
+
+
+</head>
+
+<body>
+     <div class="loader" id="loader" style="display: none;"></div>
+    <div class="main">
+        <div class="header">
+            <div class="headerh">
+                <h1 class="admin"><i class="fa-solid fa-globe"></i> ADMINISTRATOR</h1>
+                <a href="./main.html" style="text-decoration: none;">
+                    <h1 class="DASH"><i class="fa-solid fa-table-columns"></i>DASHBOARD</h1>
+                </a>
+                <div>
+                    <p id="timer" class="time"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="svg">
+            <svg id="three" onclick="three()" class="three" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M4 12h16" />
+                <path d="M4 18h16" />
+                <path d="M4 6h16" />
+            </svg>
+        </div>
+
+        <div class="side" id="slide">
+            <svg id="cut" onclick="cut()" class="cut" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+            </svg>
+            <a onclick="showDashboard()"><i class="fa-solid fa-table-columns"></i> DASHBOARD</a>
+
+            <a  onclick="home()" ><i class="fa-solid fa-user-tie"></i> HOME</a>
+            <a ><i class="fa-regular fa-address-card"></i> ABOUT</a>
+            <a><i class="fa-regular fa-credit-card"></i> PAYMENT</a>
+            <a><i class="fa-solid fa-clock-rotate-left"></i> HISTORY</a>
+            <a><i class="fa-solid fa-person-chalkboard"></i> PRESENT</a>
+            <a><i class="fa-solid fa-ban"></i> ABSENT</a>
+            <a><i class="fa-regular fa-square-plus"></i> ADMISSION</a>
+            <a><i class="fa-solid fa-database"></i> DATA</a>
+        </div>
+        <div id="dashboardView" class="dashboard-view" >
+            <marquee  direction="left">WELCOME TO OUR DASHBOARD THIS  DASHBOARD WILL HELP YOU TO RECORD OF ATTENDENCE OF YOUR INSTITUTE  </marquee>
+</div>
+
+    <div class="dashb" id="dashbb">
+        <h1>here my dashboard-view</h1>
+        <div class="studentchart">
+              <canvas id="myBarChart"  class="chartt" width="600" height="400"></canvas>
+        </div>
+
+    </div>
+    <div class="all" id="all1" style="display: none;">
+
+        <div class="cardp" >
+            <div class="card" onclick="card()" id="studentcard">
+                <h1><i class="fa-solid fa-child"></i> STUDENT</h1>
+            </div>
+            <div class="card1" onclick="card1()" id="teachercard">
+                <h1><i class="fa-solid fa-school"></i> TEACHER</h1>
+            </div>
+            <div class="card2" onclick="card2()" id="admincard">
+                <h1><i class="fa-solid fa-user-tie"></i> ADMIN</h1>
+            </div>
+
+            <div class="datacard" id="datacard">
+                <div class="button-row">
+                    <a class="list" onclick="liststudent()">
+                        <h1>LIST</h1>
+                    </a>
+                    <a class="addstudent" onclick="addstudent1()">
+                        <h1>ADD STUDENT</h1>
+                    </a>
+                </div>
+
+
+                <div class="form" id="form2">
+                    <form class="form1" id="form1">
+                        <div class="form-group">
+                            <label for="name">Student Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="COURCE">Course:</label>
+                            <select id="COURCE">
+                                <option value="SOFTWARE">SOFTWARE</option>
+                                <option value="WEB DESIGNING">WEB DESIGNING</option>
+                                <option value="BASIC">BASIC</option>
+                                <option value="GRAPHIC">GRAPHIC</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="BATCH">Batch:</label>
+                            <select id="BATCH">
+                                <option value="9AM">9AM TO 12AM</option>
+                                <option value="12AM">12AM TO 2PM</option>
+                                <option value="3PM">3PM TO 5PM</option>
+                                <option value="5PM">5PM TO 7PM</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="admission_date">Admission Date:</label>
+                            <input type="date" id="admission_date" name="admission_date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="end_date">End Date:</label>
+                            <input type="date" id="end_date" name="end_date" required>
+                        </div>
+
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+                <table class="table" onclick="list()" id="table1">
+                    <tr>
+                        <th>S:NO </th>
+                        <th>NAME OF THE STUDENT </th>
+                        <th>COURCE OF THE STUDENT</th>
+                        <th>BATCH OF THE STUDENT</th>
+                        <th>ADDMISSION DATE OF STUDENT</th>
+                    </tr>
+                  
+                </table>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="datacardteacher" id="datacardteacher1">
+        <div class="button-row">
+            <a class="listteacher" onclick="listteacher()">
+                <h1>LIST</h1>
+            </a>
+            <a class="addteacher" onclick="addteacher1()">
+                <h1>ADD TEACHER</h1>
+            </a>
+            <a class="meeting" onclick="meetingss()">
+                <h1>MEETING SECHDULE</h1>
+            </a>
+        </div>
+        <div class="form" id="formteacher" style="display: none;">
+            <form class="form1" id="addteacherform">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="studentname" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="COURCE">Course:</label>
+                    <select id="COURCE">
+                        <option value="SOFTWARE">SOFTWARE</option>
+                        <option value="WEB DESIGNING">WEB DESIGNING</option>
+                        <option value="BASIC">BASIC</option>
+                        <option value="GRAPHIC">GRAPHIC</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="BATCH">Batch:</label>
+                    <select id="BATCH">
+                        <option value="9AM">9AM TO 12AM</option>
+                        <option value="12AM">12AM TO 2PM</option>
+                        <option value="3PM">3PM TO 5PM</option>
+                        <option value="5PM">5PM TO 7PM</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="admission_date">Admission Date:</label>
+                    <input type="date" id="admission_date" name="admission_date" required>
+                </div>
+
+
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="container" id="meetingcon" >
+<div class="form" id="meetingForm">
+  <form class="form1" id="meetingFormInner">
+    <div class="form-group">
+      <label for="meetingName">Meeting Name:</label>
+      <input type="text" id="meetingName" required />
+    </div>
+    <div class="form-group">
+      <label for="meetingDate">Meeting Date:</label>
+      <input type="date" id="meetingDate" required />
+    </div>
+    <div class="form-group">
+      <label for="meetingTime">Meeting Time:</label>
+      <input type="time" id="meetingTime" required />
+    </div>
+    <input type="submit" value="Add Meeting" />
+  </form>
+</div>
+
+
+
+            <table id="meetingTable" class="meetinglist" style="display: none;">
+
+                <thead>
+
+                    <tr>
+                        <th>S:NO</th>
+                        <th>Meeting Name</th>
+                        <th>Meeting Date</th>
+                        <th>Meeting Time</th>
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+
+
+        <div id="teacherlist" class="teacherlist" style="display: none;">
+                <table>
+            <thead>
+                <tr>
+                    <th>Teacher Name</th>
+                    <th>Course</th>
+                    <th>Batch</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+            </table>
+        </div>
+        </div>
+
+       
+        <script src="./script.js"></script>
+        <script>   const ctx = document.getElementById('myBarChart').getContext('2d');
+
+    const myBarChart = new Chart(ctx, {
+      type: 'bar', // BAR chart type
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: 'Number of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.7)',
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 206, 86, 0.7)',
+            'rgba(75, 192, 192, 0.7)',
+            'rgba(153, 102, 255, 0.7)',
+            'rgba(255, 159, 64, 0.7)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true // start y-axis at 0
+          }
+        }
+      }
+    });</script>
+</body>
+
+
+</html>
