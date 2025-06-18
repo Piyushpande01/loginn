@@ -353,7 +353,7 @@ th, td {
   100% { transform: rotate(360deg); }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .side {
     transform: translateX(-100%);
     top: 60px;
@@ -437,7 +437,7 @@ th, td {
 }
 
 /* Hide sidebar by moving it left on small screens */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .side {
     transform: translateX(-100%);
     position: fixed;
@@ -483,7 +483,7 @@ th, td {
 }
 
 /* Adjust main content margin when sidebar is visible on desktop */
-@media (min-width: 769px) {
+@media (min-width: 480px) {
   .main {
     margin-left: 250px;
   }
